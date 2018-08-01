@@ -1955,7 +1955,8 @@ usage(void)
 	die("usage: %s [-aiv] [-c class] [-f font] [-g geometry]"
 	    " [-n name] [-o file]\n"
 	    "          [-T title] [-t title] [-w windowid]"
-	    " [[-e] command [args ...]]\n"
+	    " [-d dir]\n"
+        "          [[-e] command [args ...]]\n"
 	    "       %s [-aiv] [-c class] [-f font] [-g geometry]"
 	    " [-n name] [-o file]\n"
 	    "          [-T title] [-t title] [-w windowid] -l line"
@@ -1976,6 +1977,9 @@ main(int argc, char *argv[])
 	case 'c':
 		opt_class = EARGF(usage());
 		break;
+    case 'd':
+        chdir(EARGF(usage())); 
+        break;
 	case 'e':
 		if (argc > 0)
 			--argc, ++argv;
